@@ -4,4 +4,4 @@ from trades.views import TradeViewSet
 
 router = DefaultRouter()
 
-router.register(r'trades', TradeViewSet)
+router.register(r'trades', TradeViewSet, 'trades-list')

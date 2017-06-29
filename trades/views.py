@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.mixins import UpdateModelMixin, RetrieveModelMixin, ListModelMixin, CreateModelMixin, \
     DestroyModelMixin
 from rest_framework.viewsets import GenericViewSet
