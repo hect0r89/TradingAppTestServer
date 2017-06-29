@@ -6,6 +6,7 @@ from trades.models import Trade
 from trades.serializers import TradeSerializer
 
 
-class TradeViewSet(GenericViewSet, UpdateModelMixin, RetrieveModelMixin, ListModelMixin, CreateModelMixin, DestroyModelMixin):
+class TradeViewSet(GenericViewSet, UpdateModelMixin, RetrieveModelMixin, ListModelMixin, CreateModelMixin,
+                   DestroyModelMixin):
     queryset = Trade.objects.all()
     serializer_class = TradeSerializer
