@@ -5,7 +5,12 @@ from django.db import models
 
 
 def generate_id():
+    """
+    Method that generate the alphanumeric id randomly.
+    :return: id with TR####### format
+    """
     exist = True
+    generated_id = ''
     while exist:
         generated_id = 'TR' + ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(7))
         trade_repeated = Trade.objects.filter(pk=generated_id)

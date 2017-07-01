@@ -6,7 +6,10 @@ from trades.models import Trade
 from trades.serializers import TradeSerializer
 
 
-class TradeViewSet(GenericViewSet, UpdateModelMixin, RetrieveModelMixin, ListModelMixin, CreateModelMixin,
-                   DestroyModelMixin):
+class TradeViewSet(GenericViewSet, ListModelMixin, CreateModelMixin):
+    """
+    View that only allow create and list trades. 
+    Return the queryset order by date.
+    """
     queryset = Trade.objects.all().order_by('-date_booked')
     serializer_class = TradeSerializer
