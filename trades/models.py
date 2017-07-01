@@ -5,7 +5,13 @@ from django.db import models
 
 
 def generate_id():
-    return 'TR' + ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(7))
+    exist = True
+    while exist:
+        generated_id = 'TR' + ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(7))
+        trade_repeated = Trade.objects.filter(pk=generated_id)
+        if not trade_repeated:
+            exist = False
+    return generated_id
 
 
 class Trade(models.Model):
@@ -14,7 +20,6 @@ class Trade(models.Model):
     sell_currency = models.CharField('Sell currency', blank=False, null=False, max_length=3)
     sell_amount = models.FloatField('Sell amount', blank=False, null=False)
     buy_currency = models.CharField('Buy currency', blank=False, null=False, max_length=3)
-    buy_amount = models.FloatField('Buy amount', blank=False, null=False)
     rate = models.FloatField('Rate', blank=False, null=False)
     date_booked = models.DateTimeField('Date booked', blank=False, null=False, auto_now=True)
 

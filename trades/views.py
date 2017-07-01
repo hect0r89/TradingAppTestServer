@@ -8,5 +8,5 @@ from trades.serializers import TradeSerializer
 
 class TradeViewSet(GenericViewSet, UpdateModelMixin, RetrieveModelMixin, ListModelMixin, CreateModelMixin,
                    DestroyModelMixin):
-    queryset = Trade.objects.all()
+    queryset = Trade.objects.all().order_by('-date_booked')
     serializer_class = TradeSerializer
